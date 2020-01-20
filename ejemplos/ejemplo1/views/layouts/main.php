@@ -39,11 +39,12 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
+            //['label' => 'About', 'url' => ['/site/about']],
+            //['label' => 'Contact', 'url' => ['/site/contact']],
             ['label' => 'Hola', 'url' => ['/site/hola']],
             ['label' => 'Mensaje', 'url' => ['/site/mensaje']],
             ['label' => 'Actores', 'url' => ['/actor']],
+            ['label' => 'Peliculas', 'url' => ['/site/pelicula']]
 //            Yii::$app->user->isGuest ? (
 //                ['label' => 'Login', 'url' => ['/site/login']]
 //            ) : (
@@ -72,9 +73,9 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+        <p class="pull-left"> Desarrollado en clase de Programacion de Aplicaciones</p>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-right">2020</p>
     </div>
 </footer>
 

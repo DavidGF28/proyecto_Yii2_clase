@@ -7,6 +7,7 @@ $config = [
     'id' => 'ejemplo1',
     'name'=> 'ejemplo1 de Yii2',
     'language'=>'es',
+    'defaultRoute'=>'site/index',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
