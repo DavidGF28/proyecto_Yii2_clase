@@ -9,7 +9,6 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
-use app\models\Catalogo;
 
 class SiteController extends Controller
 {
@@ -60,25 +59,70 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionInicio()
+    public function actionIndex()
     {
         return $this->render('index');
     }
-    
-    public function actionCatalogo()
+
+    /**
+     * Login action.
+     *
+     * @return Response|string
+     */
+    public function actionLogin()
     {
-        
-        //select * from catalogo
-        $dataProvider = new \yii\data\ActiveDataProvider(['query'=> \app\models\Catalogo::find()]);
-        return $this->render('Catalogo',["datos"=>$dataProvider,]);
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
+        $model = new LoginForm();
+        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            return $this->goBack();
+        }
+
+        $model->password = '';
+        return $this->render('login', [
+            'model' => $model,
+        ]);
     }
-    
-    public function actionRecomendar(){
-    $model= Catalogo::find()
-            ->offset(random_int(0,Catalogo::find()->count()-1)
-                    )
-            ->limit(1)
-            ->one();
-    return $this->render('recomendar', ["dato"=>$model]);
+
+    /**
+     * Logout action.
+     *
+     * @return Response
+     */
+    public function actionLogout()
+    {
+        Yii::$app->user->logout();
+
+        return $this->goHome();
+    }
+
+    /**
+     * Displays contact page.
+     *
+     * @return Response|string
+     */
+    public function actionContact()
+    {
+        $model = new ContactForm();
+        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
+            Yii::$app->session->setFlash('contactFormSubmitted');
+
+            return $this->refresh();
+        }
+        return $this->render('contact', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
+     * Displays about page.
+     *
+     * @return string
+     */
+    public function actionAbout()
+    {
+        return $this->render('about');
     }
 }
