@@ -9,6 +9,7 @@ $config = [
     'bootstrap' => ['log'],
     'name'=> 'Y2E5',
     'language'=> 'es',
+    'defaultRoute'=>'site/inicio',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
