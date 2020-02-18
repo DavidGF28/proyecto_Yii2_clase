@@ -21,14 +21,29 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
             'id',
             'nombre',
-            'foto',
-            'almacen',
-            'fecha',
+            ['label'=>'imagen de producto',
+             'attribute'=>'foto',
+             'format'=>'raw',
+             'contentOptions'=>['style'=>'text-align:center'],
+             'value'=>function($d){
+                    return Html::img("@web/imgs/" . $d->foto,['width'=>'100px']);
+                }
 
+             ],
+            'fecha',
+            ['label'=>'datos almacen',
+             'attribute'=>'almacen',
+             'format'=>'raw',
+                'value'=>function($d){
+                    return $d->almacen . 
+                            '<br>' . 
+                            $d->almacen0->nombre .
+                            '<br>' .
+                            $d->almacen0->direccion;
+                }
+            ],        
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

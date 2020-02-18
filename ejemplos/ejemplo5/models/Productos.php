@@ -17,6 +17,7 @@ use Yii;
  */
 class Productos extends \yii\db\ActiveRecord
 {
+    public $actualizar;
     /**
      * {@inheritdoc}
      */
@@ -70,6 +71,23 @@ class Productos extends \yii\db\ActiveRecord
     public function beforeSave($insert) {
         parent::beforeSave($insert);
         $this->fecha= \DateTime::createFromFormat("d/m/Y", $this->fecha)->format("Y/m/d");
+        $this->actualizar=true;
+        if(!isset($this->foto)){
+            $this->foto=$this->getOldAttribute("foto");
+            $this->actualizar=false;
+        }
         return true;
+    }
+    
+    public function afterSave($insert, $changedAttributes) {
+       if($this->actualizar){
+           $this->foto->SaveAs('imgs/'.$this->id . iconv('UTF-8','ISO-8859-1', $this->foto->name),false);
+           $this->foto=$this->id . iconv('UTF-8','ISO-8859-1', $this->foto->name);
+       }
+       $this->updateAttributes(["foto"]);
+    }
+    
+    public function getFoto(){
+        return Yii::$app->request->getBaseUrl().'/imgs/'.$this->foto;
     }
 }

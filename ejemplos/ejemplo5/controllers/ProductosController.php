@@ -8,6 +8,7 @@ use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * ProductosController implements the CRUD actions for Productos model.
@@ -66,12 +67,16 @@ class ProductosController extends Controller
     {
         $model = new Productos();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->foto = UploadedFile::getInstance($model,'foto');
+            if ($model->save()){
+                return $this->redirect(['view','id'=>$model->id]);
+            }
         }
 
         return $this->render('create', [
             'model' => $model,
+                'model' => $model,
         ]);
     }
 
@@ -85,15 +90,14 @@ class ProductosController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
-
-        return $this->render('update', [
-            'model' => $model,
-        ]);
-    }
+        
+        if ($model->load(Yii::$app->request->post())) {
+            $model->foto= UploadedFile::getInstance($model, 'foto');
+        if ($model->save()){
+            return $this->redirect(['view','id'=>$model->id]);
+        }}
+        return $this->render('update',['model'=>$model,]);
+     }
 
     /**
      * Deletes an existing Productos model.
@@ -123,5 +127,12 @@ class ProductosController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+    
+    public function actionEliminar($id){
+        $model = $this->findModel($id);
+        $model->foto=null;
+        $model->save();
+        return $this->redirect(['view','id'=>$model->id]);
     }
 }
