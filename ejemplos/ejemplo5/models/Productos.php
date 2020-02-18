@@ -33,7 +33,8 @@ class Productos extends \yii\db\ActiveRecord
         return [
             [['almacen'], 'integer'],
             [['fecha'], 'safe'],
-            [['nombre', 'foto'], 'string', 'max' => 255],
+            [['nombre'], 'string', 'max'=>255],
+            [['foto'], 'file', 'skipOnEmpty'=>true, 'extensions'=>'png,jpg'],
             [['almacen'], 'exist', 'skipOnError' => true, 'targetClass' => Almacenes::className(), 'targetAttribute' => ['almacen' => 'id']],
         ];
     }

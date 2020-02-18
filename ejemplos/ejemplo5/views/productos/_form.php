@@ -21,7 +21,7 @@ $datos= ArrayHelper::map($almacenes,'id','nombre');
 
     <?= $form->field($model, 'nombre')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'foto')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'foto')->fileInput() ?>
 
     <?= $form->field($model, 'almacen')->dropDownList($datos,
             ['prompt'=>'Selecciona un Almacen']) ?>
