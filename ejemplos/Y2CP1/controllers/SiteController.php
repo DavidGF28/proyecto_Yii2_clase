@@ -76,4 +76,11 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+    
+        public function actionIndex ()
+    {
+        return $this->render('index');
+    }
+    
+    public function actionConsultas(){}
 }
