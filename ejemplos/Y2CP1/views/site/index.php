@@ -9,6 +9,9 @@ $this->title = 'My Yii Application';
 
         <div class="row">
             <div>
+                <p>0-aqui metere el ejemplo</p>
+            </div>
+            <div>
                 <p>1-todos los campos empleados</p>
             </div>
             <div>
