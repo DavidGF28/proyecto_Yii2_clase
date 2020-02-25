@@ -19,7 +19,7 @@ use Yii;
  * @property Depart $deptNo
  */
 class Emple extends \yii\db\ActiveRecord
-{
+{   public $total;
     /**
      * {@inheritdoc}
      */

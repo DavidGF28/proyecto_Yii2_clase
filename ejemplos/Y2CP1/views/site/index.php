@@ -3,40 +3,25 @@
 /* @var $this yii\web\View */
 
 $this->title = 'My Yii Application';
+use yii\helpers\Url;
+ $i = 1;
 ?>
 <div class="site-index">
     <div class="body-content">
 
         <div class="row">
-            <div>
-                <p>0-aqui metere el ejemplo</p>
+            
+            <?php for($i = 1; $i<=35; $i++) : ?>
+            <div class="col-lg-2">
+                <h3>Ejercicio <?= $i ?></h3>
+                <p><a href="<?= Url::To('@web/site/ejercicio'.$i); ?>">Ejercicio <?=$i ?></a></p>     
             </div>
-            <div>
-                <p>1-todos los campos empleados</p>
-            </div>
-            <div>
-                <p>2-todos los campos departamentos</p>
-            </div>
-            <div>
-                <p>3-apellido y oficio de los empleados</p>
-            </div>
-            <div>
-                <p>4-localizacion y numero de departamento</p>
-            </div>
-            <div>
-                <p>5-numero, nombre y localizacion de departamento</p>
-            </div>
-            <div>
-                <p>6-numero de empleados</p>
-            </div>
+            <?php endfor; ?>
             <div>
                 <p>7-datos empleados ordenados por apellido (ascendente)</p>
             </div>
             <div>
                 <p>8-datos empleados ordenados por apellido (descendente)</p>
-            </div>
-            <div>
-                <p>9-numero de departamentos</p>
             </div>
             <div>
                 <p>10-datos empleados ordenados por numero departamento (descendente)</p>
@@ -48,22 +33,7 @@ $this->title = 'My Yii Application';
                 <p>12-datos empleados ordenados por numero departamento (descendente) y apellido (ascendente)</p>
             </div>
             <div>
-                <p>13-codigo de empleados cuyo salario sea >2000</p>
-            </div>
-            <div>
-                <p>14-codigo y apellidos de empleados cuyo salario sea <2000</p>
-            </div>
-            <div>
-                <p>15-datos de los empleados cuyo salario este entre 1500 y 2500</p>
-            </div>
-            <div>
-                <p>16-datos de los empleados cuyo oficio sea analista</p>
-            </div>
-            <div>
                 <p>17-datos de los empleados cuyo oficio sea analista y salario >2000</p>
-            </div>
-            <div>
-                <p>18-apellido y oficio de los empleados del departamento 20</p>
             </div>
             <div>
                 <p>19-numero de empleados que sean vendedores</p>

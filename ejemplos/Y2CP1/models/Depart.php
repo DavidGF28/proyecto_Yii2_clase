@@ -14,7 +14,7 @@ use Yii;
  * @property Emple[] $emples
  */
 class Depart extends \yii\db\ActiveRecord
-{
+{   public $total;
     /**
      * {@inheritdoc}
      */
