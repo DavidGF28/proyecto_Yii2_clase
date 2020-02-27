@@ -12,10 +12,7 @@ use app\models\ContactForm;
 
 class SiteController extends Controller
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function behaviors()
+      public function behaviors()
     {
         return [
             'access' => [
@@ -38,9 +35,7 @@ class SiteController extends Controller
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
+
     public function actions()
     {
         return [
@@ -67,11 +62,7 @@ class SiteController extends Controller
         ]);
     }
 
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
+
     public function actionAbout()
     {
         return $this->render('about');
@@ -160,32 +151,32 @@ class SiteController extends Controller
             'columns' => ['total']
         ]);
     }
-//  public function actionEjercicio7(){
-//        $adp=new \yii\data\ActiveDataProvider([
-//            'query'=>\app\models\Emple::find(),
-//            'sort'=>[
-//                'defaultOrder'=>[],
-//            ],
-//        ]);
-//        //var_dump(\app\models\Emple::find()->all());die();
-//        return $this->render('grid', [
-//            'adp' => $adp, 
-//            'columns' => []
-//        ]);
-//    }    
-//  public function actionEjercicio8(){
-//        $adp=new \yii\data\ActiveDataProvider([
-//            'query'=>\app\models\Emple::find(),
-//            'sort'=>[
-//                'defaultOrder'=>[],
-//            ],
-//        ]);
-//        //var_dump(\app\models\Emple::find()->all());die();
-//        return $this->render('grid', [
-//            'adp' => $adp, 
-//            'columns' => []
-//        ]);
-//    }    
+    public function actionEjercicio7(){
+        $adp=new \yii\data\ActiveDataProvider([
+            'query'=>\app\models\Emple::find(),
+            'sort'=>[
+                'defaultOrder'=>['apellido'=>SORT_ASC],
+            ],
+        ]);
+        //var_dump(\app\models\Emple::find()->all());die();
+        return $this->render('grid', [
+            'adp' => $adp, 
+            'columns' => []
+        ]);
+    }    
+    public function actionEjercicio8(){
+        $adp=new \yii\data\ActiveDataProvider([
+            'query'=>\app\models\Emple::find(),
+            'sort'=>[
+                'defaultOrder'=>['apellido'=>SORT_DESC],
+            ],
+        ]);
+        //var_dump(\app\models\Emple::find()->all());die();
+        return $this->render('grid', [
+            'adp' => $adp, 
+            'columns' => []
+        ]);
+    }    
     public function actionEjercicio9(){
         $adp=new \yii\data\ActiveDataProvider([
             'query'=> \app\models\Depart::find()->select("count(*) dept_no"),
@@ -199,45 +190,47 @@ class SiteController extends Controller
             'columns' => ['dept_no']
         ]);
     }    
-//  public function actionEjercicio10(){
-//        $adp=new \yii\data\ActiveDataProvider([
-//            'query'=>\app\models\Emple::find(),
-//            'sort'=>[
-//                'defaultOrder'=>[],
-//            ],
-//        ]);
-//        //var_dump(\app\models\Emple::find()->all());die();
-//        return $this->render('grid', [
-//            'adp' => $adp, 
-//            'columns' => []
-//        ]);
-//    }
-//  public function actionEjercicio11(){
-//        $adp=new \yii\data\ActiveDataProvider([
-//            'query'=>\app\models\Emple::find(),
-//            'sort'=>[
-//                'defaultOrder'=>[],
-//            ],
-//        ]);
-//        //var_dump(\app\models\Emple::find()->all());die();
-//        return $this->render('grid', [
-//            'adp' => $adp, 
-//            'columns' => []
-//        ]);
-//    }
-//  public function actionEjercicio12(){
-//        $adp=new \yii\data\ActiveDataProvider([
-//            'query'=>\app\models\Emple::find(),
-//            'sort'=>[
-//                'defaultOrder'=>[],
-//            ],
-//        ]);
-//        //var_dump(\app\models\Emple::find()->all());die();
-//        return $this->render('grid', [
-//            'adp' => $adp, 
-//            'columns' => []
-//        ]);
-//    }
+    public function actionEjercicio10(){
+        $adp=new \yii\data\ActiveDataProvider([
+            'query'=>\app\models\Emple::find(),
+            'sort'=>[
+                'defaultOrder'=>['dept_no'=>SORT_DESC],
+            ],
+        ]);
+        //var_dump(\app\models\Emple::find()->all());die();
+        return $this->render('grid', [
+            'adp' => $adp, 
+            'columns' => [],
+        ]);
+    }
+    public function actionEjercicio11(){
+        $adp=new \yii\data\ActiveDataProvider([
+            'query'=>\app\models\Emple::find(),
+            'sort'=>[
+                'defaultOrder'=>['dept_no'=>SORT_DESC,
+                    'oficio'=>SORT_ASC],
+            ],
+        ]);
+        //var_dump(\app\models\Emple::find()->all());die();
+        return $this->render('grid', [
+            'adp' => $adp, 
+            'columns' => []
+        ]);
+    }
+    public function actionEjercicio12(){
+        $adp=new \yii\data\ActiveDataProvider([
+            'query'=>\app\models\Emple::find(),
+            'sort'=>[
+                'defaultOrder'=>['dept_no'=>SORT_DESC,
+                    'apellido'=>SORT_ASC],
+            ]
+        ]);
+        //var_dump(\app\models\Emple::find()->all());die();
+        return $this->render('grid', [
+            'adp' => $adp, 
+            'columns' => []
+        ]);
+    }
     public function actionEjercicio13(){
         $adp=new \yii\data\ActiveDataProvider([
             'query'=>\app\models\Emple::find()->where(['>','salario',2000]),
@@ -290,19 +283,19 @@ class SiteController extends Controller
             'columns' => []
         ]);
     }
-//    public function actionEjercicio17(){
-//        $adp=new \yii\data\ActiveDataProvider([
-//            'query'=>\app\models\Emple::find()->where(['between','salario',1500,2500]),
-//            'sort'=>[
-//                'defaultOrder'=>[],
-//            ],
-//        ]);
-//        //var_dump(\app\models\Emple::find()->all());die();
-//        return $this->render('grid', [
-//            'adp' => $adp, 
-//            'columns' => []
-//        ]);
-//    }
+    public function actionEjercicio17(){
+        $adp=new \yii\data\ActiveDataProvider([
+            'query'=>\app\models\Emple::find()->where(['and',['=','oficio','analista'],['>','salario',2000]]),
+            'sort'=>[
+                'defaultOrder'=>[],
+            ],
+        ]);
+        //var_dump(\app\models\Emple::find()->all());die();
+        return $this->render('grid', [
+            'adp' => $adp, 
+            'columns' => []
+        ]);
+    }
     public function actionEjercicio18(){
         $adp=new \yii\data\ActiveDataProvider([
             'query'=>\app\models\Emple::find()->where(['=','dept_no',20]),
@@ -318,7 +311,7 @@ class SiteController extends Controller
     }
 //    public function actionEjercicio19(){
 //        $adp=new \yii\data\ActiveDataProvider([
-//            'query'=>\app\models\Emple::find()->where(['=','dept_no',20]),
+//            'query'=>\app\models\Emple::find()->where(['=','oficio','vendedor']),
 //            'sort'=>[
 //                'defaultOrder'=>[],
 //            ],
@@ -355,17 +348,30 @@ class SiteController extends Controller
 //            'columns' => ['apellido','oficio']
 //        ]);
 //    }
-    public function actionEjercicio22(){
-        $adp=new \yii\data\ActiveDataProvider([
-            'query'=>\app\models\Emple::find()->where([]),
-            'sort'=>[
-                'defaultOrder'=>[],
-            ],
-        ]);
-        //var_dump(\app\models\Emple::find()->all());die();
-        return $this->render('grid', [
-            'adp' => $adp, 
-            'columns' => []
-        ]);
-    }       
+//    public function actionEjercicio22(){
+//        $adp=new \yii\data\ActiveDataProvider([
+//            'query'=>\app\models\Emple::find()->where([]),
+//            'sort'=>[
+//                'defaultOrder'=>[],
+//            ],
+//        ]);
+//        //var_dump(\app\models\Emple::find()->all());die();
+//        return $this->render('grid', [
+//            'adp' => $adp, 
+//            'columns' => []
+//        ]);
+//    }
+//    public function actionEjercicio23(){
+//        $adp=new \yii\data\ActiveDataProvider([
+//            'query'=>\app\models\Emple::find()->where([]),
+//            'sort'=>[
+//                'defaultOrder'=>[],
+//            ],
+//        ]);
+//        //var_dump(\app\models\Emple::find()->all());die();
+//        return $this->render('grid', [
+//            'adp' => $adp, 
+//            'columns' => []
+//        ]);
+//    }   
 }

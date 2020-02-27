@@ -18,24 +18,6 @@ use yii\helpers\Url;
             </div>
             <?php endfor; ?>
             <div>
-                <p>7-datos empleados ordenados por apellido (ascendente)</p>
-            </div>
-            <div>
-                <p>8-datos empleados ordenados por apellido (descendente)</p>
-            </div>
-            <div>
-                <p>10-datos empleados ordenados por numero departamento (descendente)</p>
-            </div>
-            <div>
-                <p>11-datos empleados ordenados por numero departamento (descendente) y oficio (ascendente)</p>
-            </div>
-            <div>
-                <p>12-datos empleados ordenados por numero departamento (descendente) y apellido (ascendente)</p>
-            </div>
-            <div>
-                <p>17-datos de los empleados cuyo oficio sea analista y salario >2000</p>
-            </div>
-            <div>
                 <p>19-numero de empleados que sean vendedores</p>
             </div>
             <div>
