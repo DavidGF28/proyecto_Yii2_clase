@@ -9,6 +9,8 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\Productos;
+use yii\data\ActiveDataProvider;
 
 class SiteController extends Controller
 {
@@ -61,8 +63,40 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        return $this->render('index',
+                ["titulo"=>"productos de Jota",
+                 "foto"=>"jota.png",
+                 "texto"=>"ejemplo de clase con web"   
+            ]);
     }
+       
+    public function actionProductos(){
+        $query="select * from productos";
+        $activeQuery=Productos::find();
+        $dataProvider=new ActiveDataProvider([
+            "query"=>$activeQuery,
+        ]);
+        
+        return $this->render("productos",[
+            "data"=>$dataProvider,
+        ]);
+        
+    }
+    
+     public function actionOfertas(){
+        $query="select * from productos";
+        $activeQuery=Productos::find()
+                ->where(["oferta"=>1]);
+        $dataProvider=new ActiveDataProvider([
+            "query"=>$activeQuery,
+        ]);
+        
+        return $this->render("productos",[
+            "data"=>$dataProvider,
+        ]);
+        
+    }
+
 
     /**
      * Login action.
@@ -85,7 +119,49 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+    
+    public function actionInformacion(){
+        $model=new ContactForm();
+        if($model->load(Yii::$app->request->post())
+                && 
+            $model->contact(Yii::$app->params["informacion"])){
+            Yii::$app->session->setFlash('enviadaInformacion');
+            return $this->refresh();
+        }
+        
+        return $this->render("informacion",[
+            "model"=>$model,
+        ]);
+                
+    }
+    
+    
+    /**
+     * prueba de envio de correo electronico desde informacion
+     */
+    public function actionCorreo(){
+        $correo=new ContactForm();
+        $correo->nombre="Cliente";
+        $correo->contact(Yii::$app->params["informacion"]);
+    }
+    
+    
+        /**
+     * prueba de envio de correo electronico desde contacto
+     */
+     public function actionContactoPrueba(){
+        $correo=new Contacto();
+        $correo->asunto="Probando este rollo";
+    $correo->temas=0;
+        $correo->correo="cliente@correo.es";
+        $correo->nombre="Cliente";
+           $correo->apellidos="Cliente";
+        $correo->contact();
 
+    }
+   
+
+    
     /**
      * Logout action.
      *
@@ -114,6 +190,20 @@ class SiteController extends Controller
         return $this->render('contact', [
             'model' => $model,
         ]);
+    }
+     public function actionContacto(){
+        $model=new Contacto();
+        if($model->load(Yii::$app->request->post())
+                && 
+            $model->contact()){
+            Yii::$app->session->setFlash('enviadaInformacion');
+            return $this->refresh();
+        }
+        
+        return $this->render("contacto",[
+            "model"=>$model,
+        ]);
+                
     }
 
     /**
