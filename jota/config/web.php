@@ -2,11 +2,12 @@
 
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
+$mailer=require __DIR__ . '/mailer.php';
 
 $config = [
     'id' => 'basic',
     'name'=> 'Jota',
-    'defalutRoute'=> 'site/index',
+    'defaultRoute'=> 'site/index',
     'language'=>'es',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],

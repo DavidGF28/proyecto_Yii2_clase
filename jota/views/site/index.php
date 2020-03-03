@@ -2,12 +2,12 @@
 use yii\helpers\html;
 
 $this->title = 'My Yii Application';
-$this->registerCssFile(@web/css/mio.css,
+$this->registerCssFile("@web/css/mio.css",
         ['depends'=>[yii\bootstrap\BootstrapAsset::className()]
         ]);
-$this->registerJsFile(@web/css/mio.js,
-        ['depends'=>[yii\bootstrap\JqueryAsset::className()]
-        ]);
+//$this->registerJsFile("@web/css/mio.js",
+//        ['depends'=>[yii\bootstrap\JqueryAsset::className()]
+//        ]);
 ?>
 
 <div>
