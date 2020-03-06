@@ -71,7 +71,7 @@ class SiteController extends Controller
     }
        
     public function actionProductos(){
-        $query="select * from productos";
+        //$query="select * from productos";
         $activeQuery=Productos::find();
         $dataProvider=new ActiveDataProvider([
             "query"=>$activeQuery,
@@ -84,7 +84,7 @@ class SiteController extends Controller
     }
     
      public function actionOfertas(){
-        $query="select * from productos";
+        //$query="select * from productos";
         $activeQuery=Productos::find()
                 ->where(["oferta"=>1]);
         $dataProvider=new ActiveDataProvider([
