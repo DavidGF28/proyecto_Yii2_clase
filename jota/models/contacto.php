@@ -10,6 +10,7 @@ use yii\base\Model;
  */
 class Contacto extends Model
 {
+    public $nombre;
     public $apellidos;
     public $correo;
     public $temas;

@@ -51,7 +51,7 @@ AppAsset::register($this);
                 ['label' => '<i class="glyphicon glyphicon-user"></i> Quienes Somos', 'url' => ['/site/donde']],
                 ['label' => '<i class="glyphicon glyphicon-barcode"></i> Nuestros Productos', 'url' => ['/site/donde']],
                 '<li class="divider">&nbsp</li>',
-                ['label' => '<i class="glyphicon glyphicon-info-sign"></i> Informacion', 'url' => ['/site/donde']],    
+                ['label' => '<i class="glyphicon glyphicon-info-sign"></i> Informacion', 'url' => ['/site/informacion']],    
             ]],
             ['label' => '<i class="glyphicon glyphicon-phone-alt"></i> Contacto', 'url' => ['/site/contacto']],
         ],

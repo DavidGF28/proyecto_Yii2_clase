@@ -11,6 +11,8 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Productos;
 use yii\data\ActiveDataProvider;
+use app\models\contacto;
+use app\models\Categorias;
 
 class SiteController extends Controller
 {
@@ -215,4 +217,37 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+    
+    public function actionCategorias(){
+        $query= Categorias::find();
+        
+        $dataProvider=new ActiveDataProvider([
+            "query"=>$query,
+            "pagination"=>["pageSize"=>2,
+                ],
+            ]);
+        
+            return $this->render("categorias",[
+            "dataProvider"=>$dataProvider
+        ]);
+
+    }
+    public function actionMostrarCategoria($id){
+        $categoria= Categorias::findOne($id);
+        //$categoria= Categorias::find()->where(["id"=>$id])->one();
+        
+        $consultaProductos= Productos::find()
+                ->joinWith("relacions",FALSE,"INNER JOIN")
+                ->where(["categoria"=>$id]);
+        $dataProvider=new ActiveDataProvider([
+            "query"=>$consultaProductos,
+        ]);
+        return $this->render("mostrarCategoria",[
+            "modelo"=>$categoria,
+            "dataProvider"=>$dataProvider,
+        ]);
+        
+        
+    }
+
 }
