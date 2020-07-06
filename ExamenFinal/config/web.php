@@ -5,7 +5,7 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
  'id' => 'basic',
-    'name'=> 'Examen Fimal de Yii2',
+    'name'=> 'Examen Final de Yii2',
     'defaultRoute'=> 'site/index',
     'language'=>'es',
     'basePath' => dirname(__DIR__),
@@ -46,14 +46,14 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
+        
         'urlManager' => [
             'enablePrettyUrl' => true,
-            'showScriptName' => false,
+            'showScriptName' => true,
             'rules' => [
             ],
         ],
-        */
+        
     ],
     'params' => $params,
 ];
