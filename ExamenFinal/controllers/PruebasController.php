@@ -13,5 +13,12 @@ class PruebasController extends \yii\web\Controller
     {
         return 'Hola Mundo';
     }
+    
+       public function actionDos()
+    {           
+       $fecha = new \DateTime(date('d-m-Y H:i:s'));
+       $fecha->add(new \DateInterval('P2DPT10M'));
+        return $fecha->format('d-m-Y H:i:s') . "\n";
+    }   
 
 }
