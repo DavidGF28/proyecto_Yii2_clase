@@ -19,6 +19,11 @@ class PruebasController extends \yii\web\Controller
        $fecha = new \DateTime(date('d-m-Y H:i:s'));
        $fecha->add(new \DateInterval('P2DPT10M'));
         return $fecha->format('d-m-Y H:i:s') . "\n";
+    }
+    
+       public function actionTres()
+    {
+      return $this->render('tres');      
     }   
 
 }
